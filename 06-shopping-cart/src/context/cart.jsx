@@ -50,9 +50,7 @@ export function CartProvider({ children }) {
         payload: product
     })
 
-    const clearCart = product => dispatch({
-        type: 'CLEAR_CART'
-    })
+    const clearCart = () => dispatch({ type: 'CLEAR_CART' })
 
     /* const addToCart = product => {
         //setCart([...cart, product]) //Forma Básica
