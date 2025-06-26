@@ -3,9 +3,26 @@ import { useId } from "react";
 import { CartIcon, ClearCartIcon } from "./Icons";
 import { useCart } from '../hooks/useCart'
 
+function CartItem({ thumbnail, price, title, quantity, addToCart }) {
+    return (
+        <li>
+            <img src={thumbnail} alt={title} />
+            <div>
+                <strong>{title}</strong> - ${price}
+            </div>
+            <footer>
+                <small>
+                    Qty: {quantity}
+                </small>
+                <button onClick={addToCart}>+</button>
+            </footer>
+        </li>
+    )
+}
+
 export function Cart() {
     const cartCheckboxId = useId()
-    const { cart, clearCart } = useCart()
+    const { cart, clearCart, addToCart } = useCart()
     return (
         <>
             <label className="cart-button" htmlFor={cartCheckboxId}>
@@ -15,19 +32,16 @@ export function Cart() {
 
             <aside className="cart">
                 <ul>
-                    <li>
-                        <img src="https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/thumbnail.webp" alt="" />
-                        <div>
-                            <strong>Iphone</strong> - $1499
-                        </div>
 
-                        <footer>
-                            <small>
-                                Qty: 1
-                            </small>
-                            <button>+</button>
-                        </footer>
-                    </li>
+                    {
+                        cart.map(product => (
+                            <CartItem
+                                key={product.id}
+                                addToCart={() => addToCart(product)}
+                                {...product}
+                            />
+                        ))
+                    }
                 </ul>
 
                 <button onClick={clearCart}>

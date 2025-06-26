@@ -7,17 +7,14 @@ export function Footer() {
     const { cart } = useCart()
     return (
         <footer className="footer">
-            {
+            {/* {
                 JSON.stringify(filters, null, 2)
             }
             {
                 JSON.stringify(cart, null, 2)
-            }
+            } */}
+            <h4>Prueba técnica de React *<span>@midudev</span></h4>
+            <h5>Shopping Cart con iseContext  & useReducer</h5>
         </footer>
-
-        /*         
-        <h4>Prueba técnica de React *<span>@midudev</span></h4>
-        <h5>Shopping Cart con iseContext  & useReducer</h5>
-        */
     )
 }

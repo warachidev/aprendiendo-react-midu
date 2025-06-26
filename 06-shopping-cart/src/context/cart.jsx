@@ -12,13 +12,13 @@ export function CartProvider({ children }) {
 
         if (productInCartIndex >= 0) {
             const newCart = structuredClone(cart)
-            newCart[productInCartIndex].quantify += 1
+            newCart[productInCartIndex].quantity += 1
             return setCart(newCart)
         }
         //El producto no esta en el carrito
         setCart(prevState => ([
             ...prevState, {
-                ...product, quantify: 1
+                ...product, quantity: 1
             }
         ]))
 
